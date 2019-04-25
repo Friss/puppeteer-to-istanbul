@@ -1,8 +1,9 @@
-const PuppeteerToIstanbul = require('./lib/puppeteer-to-istanbul')
+const PuppeteerToIstanbul = require('./lib/puppeteer-to-istanbul');
 
 module.exports = {
-  write: (puppeteerFormat) => {
-    const pti = PuppeteerToIstanbul(puppeteerFormat)
-    pti.writeIstanbulFormat()
-  }
-}
+  write: async puppeteerFormat => {
+    const pti = PuppeteerToIstanbul(puppeteerFormat);
+    await pti.setup();
+    await pti.writeIstanbulFormat();
+  },
+};
